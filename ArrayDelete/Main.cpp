@@ -13,42 +13,135 @@ void deleteMultipleFromArray(int myArray[], int myArrayLen, int idxBuffer[], int
 		for(int j=0; j<idxBufferLen; j++) {
 			if(i == (idxBuffer[j]-shiftCount)) {
 				deleteElem = true;
+                shiftCount++;
 				break;
 			}
 		}
 
-		myArray[i] = myArray[i+shiftCount];
 		if(i+shiftCount >= myArrayLen) {
 			break; 
 		}
 
-		if(deleteElem) {
-			shiftCount++;
-			if(i+shiftCount < myArrayLen) {
-				myArray[i] = myArray[i+shiftCount];
-			}
-		} else {
-			i++;
-		}
-	}
+        myArray[i] = myArray[i+shiftCount];
+
+        if(!deleteElem) {
+            i++;
+        }
+    }
 }
 
 
-void testDeleteFirstFromArray()
+void testDeleteFirstElementFromArray()
 {
 	int src[] = { 5, 6, 1, 3, 9 };
 	int idxBuffer[] = { 0 };
 
-	deleteMultipleFromArray(src, 10, idxBuffer, 1);
+	deleteMultipleFromArray(src, 5, idxBuffer, 1);
 
-    assert();
+    assert(src[0] == 6);
+    assert(src[1] == 1);
+    assert(src[2] == 3);
+    assert(src[3] == 9);
+}
+
+void testDeleteLastElementFromArray()
+{
+	int src[] = { 5, 6, 1, 3, 9 };
+	int idxBuffer[] = { 4 };
+
+	deleteMultipleFromArray(src, 5, idxBuffer, 1);
+
+    assert(src[0] == 5);
+    assert(src[1] == 6);
+    assert(src[2] == 1);
+    assert(src[3] == 3);
+}
+
+void testDeleteMiddleElementFromArray()
+{
+	int src[] = { 5, 6, 1, 3, 9 };
+	int idxBuffer[] = { 2 };
+
+	deleteMultipleFromArray(src, 5, idxBuffer, 1);
+
+    assert(src[0] == 5);
+    assert(src[1] == 6);
+    assert(src[2] == 3);
+    assert(src[3] == 9);
+}
+
+void testDeleteFirstTwoElementFromArray()
+{
+	int src[] = { 5, 6, 1, 3, 9 };
+	int idxBuffer[] = { 0, 1 };
+
+	deleteMultipleFromArray(src, 5, idxBuffer, 2);
+
+    assert(src[0] == 1);
+    assert(src[1] == 3);
+    assert(src[2] == 9);
+}
+
+void testDeleteLastTwoElementFromArray()
+{
+	int src[] = { 5, 6, 1, 3, 9 };
+	int idxBuffer[] = { 3, 4 };
+
+	deleteMultipleFromArray(src, 5, idxBuffer, 2);
+
+    assert(src[0] == 5);
+    assert(src[1] == 6);
+    assert(src[2] == 1);
+}
+
+void testDeleteMiddleTwoElementFromArray()
+{
+	int src[] = { 5, 6, 1, 3, 9 };
+	int idxBuffer[] = { 1, 2 };
+
+	deleteMultipleFromArray(src, 5, idxBuffer, 2);
+
+    assert(src[0] == 5);
+    assert(src[1] == 3);
+    assert(src[2] == 9);
+}
+
+void testDeleteFirstAndLastElementFromArray()
+{
+	int src[] = { 5, 6, 1, 3, 9 };
+	int idxBuffer[] = { 0, 4 };
+
+	deleteMultipleFromArray(src, 5, idxBuffer, 2);
+
+    assert(src[0] == 6);
+    assert(src[1] == 1);
+    assert(src[2] == 3);
 }
 
 
+void testDeleteNonEdgeConsecutiveElementFromArray()
+{
+	int src[] = { 5, 6, 1, 3, 9 };
+	int idxBuffer[] = { 1, 3 };
+
+	deleteMultipleFromArray(src, 5, idxBuffer, 2);
+
+    assert(src[0] == 5);
+    assert(src[1] == 1);
+    assert(src[2] == 9);
+}
+
 void main()
 {
-	int myArray[10] = { 5, 6, 1, 3, 6, 8, 11, 35, 55, 83 };
-	int idxBuffer[3] = { 0, 7, 9 };
+	testDeleteFirstElementFromArray();
+    testDeleteLastElementFromArray();
+    testDeleteMiddleElementFromArray();
 
-	deleteMultipleFromArray(myArray, 10, idxBuffer, 3);
+    testDeleteFirstTwoElementFromArray();
+    testDeleteLastTwoElementFromArray();
+    testDeleteMiddleTwoElementFromArray();
+
+    testDeleteFirstAndLastElementFromArray();
+
+    testDeleteNonEdgeConsecutiveElementFromArray();
 }
