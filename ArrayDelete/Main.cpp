@@ -3,24 +3,24 @@
 
 void deleteMultipleFromArray(int myArray[], int myArrayLen, int idxBuffer[], int idxBufferLen)
 {
-	int shiftCount = 0;
-	int i = 0;
+    int shiftCount = 0;
+    int i = 0;
 
-	while(true) {
+    while(true) {
 
-		bool deleteElem = false;
+        bool deleteElem = false;
 
-		for(int j=0; j<idxBufferLen; j++) {
-			if(i == (idxBuffer[j]-shiftCount)) {
-				deleteElem = true;
+        for(int j=0; j<idxBufferLen; j++) {
+            if(i == (idxBuffer[j]-shiftCount)) {
+                deleteElem = true;
                 shiftCount++;
-				break;
-			}
-		}
+                break;
+            }
+        }
 
-		if(i+shiftCount >= myArrayLen) {
-			break; 
-		}
+        if(i+shiftCount >= myArrayLen) {
+            break; 
+        }
 
         myArray[i] = myArray[i+shiftCount];
 
@@ -33,10 +33,10 @@ void deleteMultipleFromArray(int myArray[], int myArrayLen, int idxBuffer[], int
 
 void testDeleteFirstElementFromArray()
 {
-	int src[] = { 5, 6, 1, 3, 9 };
-	int idxBuffer[] = { 0 };
+    int src[] = { 5, 6, 1, 3, 9 };
+    int idxBuffer[] = { 0 };
 
-	deleteMultipleFromArray(src, 5, idxBuffer, 1);
+    deleteMultipleFromArray(src, 5, idxBuffer, 1);
 
     assert(src[0] == 6);
     assert(src[1] == 1);
@@ -46,10 +46,10 @@ void testDeleteFirstElementFromArray()
 
 void testDeleteLastElementFromArray()
 {
-	int src[] = { 5, 6, 1, 3, 9 };
-	int idxBuffer[] = { 4 };
+    int src[] = { 5, 6, 1, 3, 9 };
+    int idxBuffer[] = { 4 };
 
-	deleteMultipleFromArray(src, 5, idxBuffer, 1);
+    deleteMultipleFromArray(src, 5, idxBuffer, 1);
 
     assert(src[0] == 5);
     assert(src[1] == 6);
@@ -59,10 +59,10 @@ void testDeleteLastElementFromArray()
 
 void testDeleteMiddleElementFromArray()
 {
-	int src[] = { 5, 6, 1, 3, 9 };
-	int idxBuffer[] = { 2 };
+    int src[] = { 5, 6, 1, 3, 9 };
+    int idxBuffer[] = { 2 };
 
-	deleteMultipleFromArray(src, 5, idxBuffer, 1);
+    deleteMultipleFromArray(src, 5, idxBuffer, 1);
 
     assert(src[0] == 5);
     assert(src[1] == 6);
@@ -72,10 +72,10 @@ void testDeleteMiddleElementFromArray()
 
 void testDeleteFirstTwoElementFromArray()
 {
-	int src[] = { 5, 6, 1, 3, 9 };
-	int idxBuffer[] = { 0, 1 };
+    int src[] = { 5, 6, 1, 3, 9 };
+    int idxBuffer[] = { 0, 1 };
 
-	deleteMultipleFromArray(src, 5, idxBuffer, 2);
+    deleteMultipleFromArray(src, 5, idxBuffer, 2);
 
     assert(src[0] == 1);
     assert(src[1] == 3);
@@ -84,10 +84,10 @@ void testDeleteFirstTwoElementFromArray()
 
 void testDeleteLastTwoElementFromArray()
 {
-	int src[] = { 5, 6, 1, 3, 9 };
-	int idxBuffer[] = { 3, 4 };
+    int src[] = { 5, 6, 1, 3, 9 };
+    int idxBuffer[] = { 3, 4 };
 
-	deleteMultipleFromArray(src, 5, idxBuffer, 2);
+    deleteMultipleFromArray(src, 5, idxBuffer, 2);
 
     assert(src[0] == 5);
     assert(src[1] == 6);
@@ -96,10 +96,10 @@ void testDeleteLastTwoElementFromArray()
 
 void testDeleteMiddleTwoElementFromArray()
 {
-	int src[] = { 5, 6, 1, 3, 9 };
-	int idxBuffer[] = { 1, 2 };
+    int src[] = { 5, 6, 1, 3, 9 };
+    int idxBuffer[] = { 1, 2 };
 
-	deleteMultipleFromArray(src, 5, idxBuffer, 2);
+    deleteMultipleFromArray(src, 5, idxBuffer, 2);
 
     assert(src[0] == 5);
     assert(src[1] == 3);
@@ -108,10 +108,10 @@ void testDeleteMiddleTwoElementFromArray()
 
 void testDeleteFirstAndLastElementFromArray()
 {
-	int src[] = { 5, 6, 1, 3, 9 };
-	int idxBuffer[] = { 0, 4 };
+    int src[] = { 5, 6, 1, 3, 9 };
+    int idxBuffer[] = { 0, 4 };
 
-	deleteMultipleFromArray(src, 5, idxBuffer, 2);
+    deleteMultipleFromArray(src, 5, idxBuffer, 2);
 
     assert(src[0] == 6);
     assert(src[1] == 1);
@@ -121,10 +121,10 @@ void testDeleteFirstAndLastElementFromArray()
 
 void testDeleteNonEdgeConsecutiveElementFromArray()
 {
-	int src[] = { 5, 6, 1, 3, 9 };
-	int idxBuffer[] = { 1, 3 };
+    int src[] = { 5, 6, 1, 3, 9 };
+    int idxBuffer[] = { 1, 3 };
 
-	deleteMultipleFromArray(src, 5, idxBuffer, 2);
+    deleteMultipleFromArray(src, 5, idxBuffer, 2);
 
     assert(src[0] == 5);
     assert(src[1] == 1);
@@ -133,7 +133,7 @@ void testDeleteNonEdgeConsecutiveElementFromArray()
 
 void main()
 {
-	testDeleteFirstElementFromArray();
+    testDeleteFirstElementFromArray();
     testDeleteLastElementFromArray();
     testDeleteMiddleElementFromArray();
 
